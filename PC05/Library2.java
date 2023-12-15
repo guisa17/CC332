@@ -1,11 +1,11 @@
 
-public class Library {
+public class Library2 {
     
     //===========================================================
     public static int Hamming(int i, int j) {
         int distancia = 0;
-        for (int k = 0; k < DS_Thread.M; k++) {
-            if (DS_Thread.DS[i][k] != DS_Thread.DS[j][k]) {
+        for (int k = 0; k < DS_Serial.M; k++) {
+            if (DS_Serial.DS[i][k] != DS_Serial.DS[j][k]) {
                 distancia++;    
             }
         }
@@ -16,9 +16,9 @@ public class Library {
     //===========================================================
     public static float DistEuclidiana(int i, int j) {
         int distancia = 0;
-        for (int k = 0; k < DS_Thread.M; k++) {
-            distancia += (DS_Thread.DS[i][k] - DS_Thread.DS[j][k]) * 
-                         (DS_Thread.DS[i][k] - DS_Thread.DS[j][k]);
+        for (int k = 0; k < DS_Serial.M; k++) {
+            distancia += (DS_Serial.DS[i][k] - DS_Serial.DS[j][k]) * 
+                         (DS_Serial.DS[i][k] - DS_Serial.DS[j][k]);
         }
         return (float) Math.sqrt(distancia);
     }
@@ -31,16 +31,16 @@ public class Library {
 
     private static float DotProduct(int i, int j) {
         float acm = 0;
-        for (int k = 0; k < DS_Thread.M; k++) {
-            acm += DS_Thread.DS[i][k] * DS_Thread.DS[j][k];
+        for (int k = 0; k < DS_Serial.M; k++) {
+            acm += DS_Serial.DS[i][k] * DS_Serial.DS[j][k];
         }
         return acm;
     }
 
     private static float Norm(int k) {
         float norm = 0;
-        for (int i = 0; i < DS_Thread.M; i++) {
-            norm += DS_Thread.DS[k][i] * DS_Thread.DS[k][i];
+        for (int i = 0; i < DS_Serial.M; i++) {
+            norm += DS_Serial.DS[k][i] * DS_Serial.DS[k][i];
         }
         return norm;
     }
@@ -48,8 +48,8 @@ public class Library {
 
     //===========================================================
     public static float Spearman(int i, int j) {
-        int[] rankI = Rango(DS_Thread.DS[i]);
-        int[] rankJ = Rango(DS_Thread.DS[j]);
+        int[] rankI = Rango(DS_Serial.DS[i]);
+        int[] rankJ = Rango(DS_Serial.DS[j]);
         int n = rankI.length;
 
         int[] rankDiff = new int[n];
